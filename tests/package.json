@@ -1,0 +1,11 @@
+{
+    "name": "open-sdg-tests",
+    "version": "1.0.0",
+    "description": "Integration testing for Open SDG",
+    "dependencies": {
+        "@cucumber/cucumber": "latest",
+        "cucumber-mink": "latest",
+        "pa11y-ci": "latest",
+        "simple-git": "latest"
+    }
+}

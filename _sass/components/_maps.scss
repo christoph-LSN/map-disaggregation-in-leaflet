@@ -1,0 +1,269 @@
+// Leaflet map styles.
+#main-content {
+  #map {
+    height: 500px;
+    width: 100%;
+
+    #loader-container {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      background: $backgroundColor;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        height: auto;
+      }
+    }
+
+    .leaflet-control-search {
+      #map-search-combobox {
+        display: inline;
+      }
+      .search-button {
+        background-image: none;
+        font-size: 20px;
+        padding-left: 6px;
+        color: $text-color;
+      }
+      .search-cancel {
+        background-image: none;
+        color: $text-color;
+        font-size: 16px;
+        line-height: 16px;
+        height: 22px;
+        padding: 5px;
+        margin: 3px 1px;
+      }
+      .search-input {
+        color: $text-color;
+      }
+    }
+    .leaflet-bar-timecontrol {
+      border-color: $text-color;
+      .timecontrol-date {
+        min-width: 80px;
+        padding: 0 10px;
+        color: $text-color;
+        text-align: center;
+      }
+      .timecontrol-slider {
+        @media only screen and (max-width: 680px) {
+          display: none;
+        }
+        .knob {
+          background-color: lighten($text-color, 50%);
+          border-color: $text-color;
+        }
+        .slider {
+          border-color: lighten($text-color, 25%);
+        }
+      }
+      &.leaflet-control-attribution {
+        background: $backgroundColor;
+        a {
+          color: $link-color;
+        }
+      }
+    }
+    .leaflet-control-fullscreen-button {
+      background-image: none;
+      font-size: 20px;
+    }
+    .disaggregation-controls {
+      z-index: 801;
+      .disaggregation-list {
+        background: $backgroundColor;
+        padding: 5px;
+        border: 2px solid rgba(0,0,0,0.3);
+        border-radius: 5px;
+        margin-bottom: 5px;
+        .disaggregation-container {
+          display: flex ;
+          margin: 5px 0px 5px 0px ;
+          .disaggregation-title {
+            flex: 0 1 auto ;
+            margin: 0px 0px 0px 0px ;
+            order: 1 ;
+          }
+          &:after {
+            content: "" ;
+            flex: 1 1 auto ;
+            margin: 0px 12px 5px 12px ;
+            order: 2 ;
+          }
+          .disaggregation-definition {
+            flex: 0 1 auto ;
+            margin: 0px 0px 0px 0px ;
+            order: 3 ;
+          }
+        }
+      }
+      .disaggregation-button {
+        background: $backgroundColor;
+        padding: 5px;
+        border: 2px solid rgba(0,0,0,0.3);
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      .disaggregation-form-outer {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        top: 50%;
+        left: 50%;
+        height: 400px;
+        width: 600px;
+        margin-top: -200px;
+        margin-left: -300px;
+        background-color: $backgroundColor;
+        padding: 20px;
+        border: 2px solid rgba(0,0,0,0.3);
+        border-radius: 5px;
+        .disaggregation-form {
+          display: flex;
+          flex-wrap: wrap;
+          height: 100%;
+          .disaggregation-fieldset-container {
+            flex: 1 0 50%;
+          }
+          .disaggregation-label {
+            display: block;
+            font-size: $fontSize;
+            .disaggregation-input {
+              margin-right: 10px;
+            }
+          }
+          .disaggregation-form-buttons {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            button {
+              margin-left: 10px;
+              font-size: $fontSize;
+            }
+          }
+        }
+      }
+    }
+    .leaflet-bottom.leaflet-right {
+      z-index: 700;
+    }
+    .leaflet-control-attribution {
+      @media only screen and (max-width: 480px) {
+        max-width: 100px;
+        text-align: right;
+      }
+    }
+    .selection-legend {
+      @media only screen and (max-width: 680px) {
+        display: none;
+      }
+      background-color: rgba(150, 150, 150, 0.6);
+      padding: 0;
+      width: 300px;
+      .legend-swatches {
+        @include preserveOriginalColors;
+        height: 10px;
+        .legend-swatch {
+          display: block;
+          float: left;
+          height: 10px;
+        }
+      }
+      .legend-values {
+        @include preserveOriginalColors;
+        position: absolute;
+        bottom: -10px;
+        width: 100%;
+        .arrow {
+          width: 0;
+          height: 0;
+          border-style: solid;
+          position: absolute;
+          top: -10px;
+          z-index: 1;
+          &.left {
+            border-width: 20px 0 0 20px;
+            border-color: transparent transparent transparent $backgroundColor;
+            left: 0;
+          }
+          &.right {
+            border-width: 0 0 20px 20px;
+            border-color: transparent transparent $backgroundColor transparent;
+            right: 1px;
+            box-shadow: 1px 1px 1px 0px $map-legendValue-shadowColor;
+          }
+        }
+        .legend-value {
+          color: $text-color;
+          padding: 0 4px;
+          background: $backgroundColor;
+          position: absolute;
+          z-index: 2;
+          &.left {
+            left: 0;
+          }
+          &.right {
+            right: 1px;
+          }
+          box-shadow: 1px 1px 1px 0px $map-legendValue-shadowColor;
+        }
+      }
+      #selection-list {
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
+        li {
+          position: relative;
+          margin-top: 3px;
+          &:first-child {
+            margin-top: 0;
+          }
+          cursor: pointer;
+          height: 23px;
+          .selection-bar, .selection-name, .selection-value {
+            height: 23px;
+            position: absolute;
+          }
+          .selection-bar {
+            border-radius: 2px 0 0 2px;
+            background: $map-legendBar-color;
+            z-index: 1;
+          }
+          .selection-name {
+            z-index: 2;
+            padding: 3px 20px 3px 3px;
+          }
+          &.no-value {
+            .selection-name {
+              background: $map-legendValue-color-noValue;
+            }
+            .selection-bar, .selection-value {
+              display: none;
+            }
+          }
+          .selection-value {
+            z-index: 2;
+            margin-right: 5px;
+            background-color: $map-legendValue-color;
+            padding: 3px;
+            border-radius: 2px;
+          }
+          .selection-close {
+            top: 6px;
+            right: 5px;
+            position: absolute;
+            z-index: 3;
+          }
+        }
+      }
+    }
+  }
+}
+
+#embeddedmapview h3 {
+  text-align: center;
+}
